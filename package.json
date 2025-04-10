@@ -11,5 +11,12 @@
   "keywords": [],
   "author": "Kadir Metin",
   "license": "ISC",
-  "packageManager": "pnpm@10.8.0"
+  "packageManager": "pnpm@10.8.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@module-federation/nextjs-mf",
+      "sharp",
+      "esbuild"
+    ]
+  }
 }

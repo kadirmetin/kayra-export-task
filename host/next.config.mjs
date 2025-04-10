@@ -1,3 +1,5 @@
+import { NextFederationPlugin } from "@module-federation/nextjs-mf";
+
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
@@ -15,6 +17,20 @@ const nextConfig = {
     "rc-tree",
     "rc-table",
   ],
+
+  webpack(config) {
+    config.plugins.push(
+      new NextFederationPlugin({
+        name: "host",
+        filename: "static/chunks/remoteEntry.js",
+        remotes: {
+          productsRemote:
+            "productsRemote@http://localhost:3001/_next/static/chunks/remoteEntry.js",
+        },
+      })
+    );
+    return config;
+  },
 };
 
 export default nextConfig;
