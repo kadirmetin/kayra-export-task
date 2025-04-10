@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "preinstall": "pnpm install --ignore-scripts",
-    "start": " pnpm --parallel dev",
+    "dev": " pnpm --parallel dev",
     "build": "pnpm --parallel build",
     "serve": "pnpm --parallel start"
   },
