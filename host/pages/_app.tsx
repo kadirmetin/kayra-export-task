@@ -1,3 +1,5 @@
+import MainFooter from "@/components/MainFooter";
+import MainHeader from "@/components/MainHeader";
 import { ConfigProvider, Layout } from "antd";
 import { Content } from "antd/es/layout/layout";
 import type { AppProps } from "next/app";
@@ -14,7 +16,9 @@ export default function App({ Component, pageProps }: AppProps) {
     >
       <Layout>
         <Content>
+          <MainHeader />
           <Component {...pageProps} />
+          <MainFooter />
         </Content>
       </Layout>
     </ConfigProvider>
