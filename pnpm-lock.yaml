@@ -51,6 +51,40 @@ importers:
         specifier: ^5
         version: 5.8.3
 
+  products-remote:
+    dependencies:
+      next:
+        specifier: 13.4.12
+        version: 13.4.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react:
+        specifier: ^18.2.0
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.3.1(react@18.3.1)
+    devDependencies:
+      '@eslint/eslintrc':
+        specifier: ^3
+        version: 3.3.1
+      '@types/node':
+        specifier: ^20
+        version: 20.17.30
+      '@types/react':
+        specifier: ^18
+        version: 18.3.20
+      '@types/react-dom':
+        specifier: ^18
+        version: 18.3.6(@types/react@18.3.20)
+      eslint:
+        specifier: ^9
+        version: 9.24.0
+      eslint-config-next:
+        specifier: 15.3.0
+        version: 15.3.0(eslint@9.24.0)(typescript@5.8.3)
+      typescript:
+        specifier: ^5
+        version: 5.8.3
+
 packages:
 
   '@ant-design/colors@7.2.0':
