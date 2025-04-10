@@ -1,0 +1,15 @@
+{
+  "name": "kayra-export-task",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "preinstall": "pnpm install --ignore-scripts",
+    "start": " pnpm --parallel dev",
+    "build": "pnpm --parallel build",
+    "serve": "pnpm --parallel start"
+  },
+  "keywords": [],
+  "author": "Kadir Metin",
+  "license": "ISC",
+  "packageManager": "pnpm@10.8.0"
+}

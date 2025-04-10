@@ -1,0 +1,4 @@
+packages:
+  - "host"
+  - "products-remote"
+  - "basket-remote"
