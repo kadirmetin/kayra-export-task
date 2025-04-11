@@ -12,7 +12,7 @@ const nextConfig = {
         name: "productsRemote",
         filename: "static/chunks/remoteEntry.js",
         exposes: {
-          "./ProductsList": "./components/ProductsList.tsx",
+          "./RemoteComponent": "./components/RemoteComponent.tsx",
         },
       })
     );
