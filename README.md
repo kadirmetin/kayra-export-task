@@ -83,11 +83,11 @@ pnpm run dev
 
 - **Coding Standards:** I followed SOLID principles to ensure that each component has a single responsibility and is easily extensible.
 
-- State Management:\*\* RTK Query is used to optimize API calls and manage state consistently.
+- State Management:** RTK Query is used to optimize API calls and manage state consistently.
 
-- Responsive Design:\*\* I adapted to the provided Figma design template to ensure a responsive and intuitive interface.
+- Responsive Design:** I adapted to the provided Figma design template to ensure a responsive and intuitive interface.
 
-- Code Documentation:\*\* I thoroughly commented the code, especially for critical design decisions such as responsive behavior and component interactions.
+- Code Documentation:** I thoroughly commented the code, especially for critical design decisions such as responsive behavior and component interactions.
 
 ## Branching Strategy
 
