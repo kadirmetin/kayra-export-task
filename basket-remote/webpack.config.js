@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { ModuleFederationPlugin } = require("webpack").container;
 
 module.exports = {
   entry: "./src/index.ts",
@@ -18,6 +19,7 @@ module.exports = {
   ],
   devServer: {
     port: 3002,
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -33,4 +35,16 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new ModuleFederationPlugin({
+      name: "basketRemote",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./RemoteComponent": "./src/components/RemoteComponent.tsx",
+      },
+      remotes: {
+        host: "host@http://localhost:3000/_next/static/chunks/remoteEntry.js",
+      },
+    }),
+  ],
 };

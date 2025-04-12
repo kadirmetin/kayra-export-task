@@ -26,6 +26,7 @@ const nextConfig = {
         remotes: {
           productsRemote:
             "productsRemote@http://localhost:3001/_next/static/chunks/remoteEntry.js",
+          basketRemote: "basketRemote@http://localhost:3002/remoteEntry.js",
         },
         exposes: {
           "./basket": "./context/BasketContext.tsx",

@@ -12,6 +12,13 @@ const RemoteComponent = dynamic(
     ssr: false,
   }
 );
+const RemoteComponent2 = dynamic(
+  // @ts-ignore
+  () => import("basketRemote/RemoteComponent"),
+  {
+    ssr: false,
+  }
+);
 
 interface InfoCardProps {
   icon: ReactNode;
@@ -121,6 +128,10 @@ export default function Home() {
       {/* REMOTE COMPONENT */}
 
       <RemoteComponent />
+
+      {/* REMOTE COMPONENT 2 */}
+
+      <RemoteComponent2 />
     </div>
   );
 }
