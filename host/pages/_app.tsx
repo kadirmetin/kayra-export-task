@@ -17,11 +17,11 @@ export default function App({ Component, pageProps }: AppProps) {
         }}
       >
         <Layout>
+          <MainHeader />
           <Content>
-            <MainHeader />
             <Component {...pageProps} />
-            <MainFooter />
           </Content>
+          <MainFooter />
         </Layout>
       </ConfigProvider>
     </BasketProvider>

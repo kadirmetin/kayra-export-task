@@ -12,13 +12,6 @@ const RemoteComponent = dynamic(
     ssr: false,
   }
 );
-const RemoteComponent2 = dynamic(
-  // @ts-ignore
-  () => import("basketRemote/RemoteComponent"),
-  {
-    ssr: false,
-  }
-);
 
 interface InfoCardProps {
   icon: ReactNode;
@@ -45,7 +38,7 @@ export default function Home() {
   };
 
   return (
-    <div style={{ padding: "40px" }}>
+    <div style={{ padding: "40px", marginTop: "102px" }}>
       {/* HERO SECTION */}
 
       <Row gutter={[24, 24]} style={{ marginBottom: "40px" }}>
@@ -128,10 +121,6 @@ export default function Home() {
       {/* REMOTE COMPONENT */}
 
       <RemoteComponent />
-
-      {/* REMOTE COMPONENT 2 */}
-
-      <RemoteComponent2 />
     </div>
   );
 }

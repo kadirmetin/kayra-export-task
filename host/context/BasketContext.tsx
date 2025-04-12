@@ -4,6 +4,7 @@ import { createContext, useContext, useReducer } from "react";
 
 const initialState: State = {
   items: [],
+  isBasketOpen: false,
 };
 
 //Reducer tanımlaması
@@ -30,6 +31,20 @@ function basketReducer(state: State, action: Action): State {
         ...state,
         items: state.items.filter((item) => item.id !== action.payload),
       };
+    case "UPDATE_QUANTITY":
+      return {
+        ...state,
+        items: state.items.map((item) =>
+          item.id === action.payload.id
+            ? { ...item, quantity: action.payload.quantity }
+            : item
+        ),
+      };
+    case "SET_BASKET_OPEN":
+      return {
+        ...state,
+        isBasketOpen: action.payload,
+      };
     case "CLEAR_BASKET":
       return {
         ...state,
@@ -46,7 +61,16 @@ function basketReducer(state: State, action: Action): State {
 const BasketContext = createContext<{
   state: State;
   dispatch: React.Dispatch<Action>;
-}>({ state: initialState, dispatch: () => null });
+  removeFromBasket: (id: number) => void;
+  updateQuantity: (id: number, quantity: number) => void;
+  setBasketOpen: (isOpen: boolean) => void;
+}>({
+  state: initialState,
+  dispatch: () => null,
+  removeFromBasket: () => null,
+  updateQuantity: () => null,
+  setBasketOpen: () => null,
+});
 
 // Context kullanımı
 export const useBasket = () => useContext(BasketContext);
@@ -55,8 +79,28 @@ export const useBasket = () => useContext(BasketContext);
 export const BasketProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(basketReducer, initialState);
 
+  const removeFromBasket = (id: number) => {
+    dispatch({ type: "REMOVE_FROM_BASKET", payload: id });
+  };
+
+  const updateQuantity = (id: number, quantity: number) => {
+    dispatch({ type: "UPDATE_QUANTITY", payload: { id, quantity } });
+  };
+
+  const setBasketOpen = (isOpen: boolean) => {
+    dispatch({ type: "SET_BASKET_OPEN", payload: isOpen });
+  };
+
   return (
-    <BasketContext.Provider value={{ state, dispatch }}>
+    <BasketContext.Provider
+      value={{
+        state,
+        dispatch,
+        removeFromBasket,
+        updateQuantity,
+        setBasketOpen,
+      }}
+    >
       {children}
     </BasketContext.Provider>
   );

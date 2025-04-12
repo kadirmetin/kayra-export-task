@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
+const deps = require("./package.json").dependencies;
 
 module.exports = {
   entry: "./src/index.ts",
@@ -40,10 +41,15 @@ module.exports = {
       name: "basketRemote",
       filename: "remoteEntry.js",
       exposes: {
-        "./RemoteComponent": "./src/components/RemoteComponent.tsx",
+        "./CartDrawer": "./src/components/CartDrawer.tsx",
       },
       remotes: {
         host: "host@http://localhost:3000/_next/static/chunks/remoteEntry.js",
+      },
+      shared: {
+        react: { singleton: true, requiredVersion: deps.react },
+        "react-dom": { singleton: true, requiredVersion: deps["react-dom"] },
+        antd: { singleton: true, requiredVersion: deps.antd },
       },
     }),
   ],

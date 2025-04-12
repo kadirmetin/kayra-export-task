@@ -10,12 +10,22 @@ import {
 import { Badge, Button, Col, Flex, Row } from "antd";
 import { Header } from "antd/es/layout/layout";
 import Text from "antd/es/typography/Text";
+import dynamic from "next/dynamic";
 import { useResponsive } from "../utils/useResponsive";
 import MobileMenu from "./MobileMenu";
 
+//@ts-ignore
+const CartDrawer = dynamic(() => import("basketRemote/CartDrawer"), {
+  ssr: false,
+});
+
 const MainHeader = () => {
   const { isMobile, isTablet } = useResponsive();
-  const { state } = useBasket();
+  const { state, dispatch } = useBasket();
+
+  const handleBasketClick = () => {
+    dispatch({ type: "SET_BASKET_OPEN", payload: !state.isBasketOpen });
+  };
 
   const menuItems = [
     {
@@ -38,6 +48,7 @@ const MainHeader = () => {
 
   return (
     <>
+      <CartDrawer />
       {/* TOP HEADER */}
       <Header
         style={{
@@ -46,6 +57,10 @@ const MainHeader = () => {
           lineHeight: "38px",
           padding: "0 20px",
           borderBottom: "1px solid #ffffff",
+          position: "fixed",
+          width: "100%",
+          top: 0,
+          zIndex: 1000,
         }}
       >
         <Row justify="center" align="middle">
@@ -65,6 +80,10 @@ const MainHeader = () => {
           lineHeight: "64px",
           padding: !isMobile ? "0 48px" : "0 16px",
           borderBottom: "1px solid rgba(0, 0, 0, 0.06)",
+          position: "fixed",
+          width: "100%",
+          top: "38px",
+          zIndex: 999,
         }}
       >
         <Row justify="space-between" align="middle">
@@ -111,6 +130,7 @@ const MainHeader = () => {
                   type="text"
                   size={isMobile ? "middle" : "large"}
                   icon={<ShoppingCartOutlined />}
+                  onClick={handleBasketClick}
                 />
               </Badge>
             </Flex>
