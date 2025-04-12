@@ -1,11 +1,18 @@
 import { useGetAllProductsQuery } from "@/store/products";
 import { Col, Row, Spin, Typography } from "antd";
+//@ts-ignore
+import { useBasket } from "host/basket";
 import ProductCard from "./ProductCard";
 
 const { Title } = Typography;
 
 const ProductsList = () => {
   const { data, isLoading, error } = useGetAllProductsQuery();
+  const { dispatch } = useBasket();
+
+  const handleAddToBasket = (product: Product) => {
+    dispatch({ type: "ADD_TO_BASKET", payload: product });
+  };
 
   // LOADING HANDLER FOR USEGETALLPRODUCTSQUERY
   if (isLoading) {
@@ -49,7 +56,7 @@ const ProductsList = () => {
       {/* RENDERING PRODUCT CARDS */}
       {data.map((product) => (
         <Col xs={24} sm={12} md={8} lg={6} key={product.id}>
-          <ProductCard product={product} />
+          <ProductCard product={product} onAddToCart={handleAddToBasket} />
         </Col>
       ))}
     </Row>

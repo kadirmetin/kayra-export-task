@@ -1,12 +1,13 @@
 "use client";
 
+import { useBasket } from "@/context/BasketContext";
 import {
   SearchOutlined,
   ShoppingCartOutlined,
   ShoppingFilled,
   UserOutlined,
 } from "@ant-design/icons";
-import { Button, Col, Flex, Row } from "antd";
+import { Badge, Button, Col, Flex, Row } from "antd";
 import { Header } from "antd/es/layout/layout";
 import Text from "antd/es/typography/Text";
 import { useResponsive } from "../utils/useResponsive";
@@ -14,6 +15,8 @@ import MobileMenu from "./MobileMenu";
 
 const MainHeader = () => {
   const { isMobile, isTablet } = useResponsive();
+  const { state } = useBasket();
+
   const menuItems = [
     {
       key: "women",
@@ -103,11 +106,13 @@ const MainHeader = () => {
                 size={isMobile ? "middle" : "large"}
                 icon={<UserOutlined />}
               />
-              <Button
-                type="text"
-                size={isMobile ? "middle" : "large"}
-                icon={<ShoppingCartOutlined />}
-              />
+              <Badge showZero count={state.items.length}>
+                <Button
+                  type="text"
+                  size={isMobile ? "middle" : "large"}
+                  icon={<ShoppingCartOutlined />}
+                />
+              </Badge>
             </Flex>
           </Col>
         </Row>

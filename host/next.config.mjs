@@ -27,6 +27,9 @@ const nextConfig = {
           productsRemote:
             "productsRemote@http://localhost:3001/_next/static/chunks/remoteEntry.js",
         },
+        exposes: {
+          "./basket": "./context/BasketContext.tsx",
+        },
       })
     );
     return config;

@@ -14,6 +14,9 @@ const nextConfig = {
         exposes: {
           "./RemoteComponent": "./components/RemoteComponent.tsx",
         },
+        remotes: {
+          host: "host@http://localhost:3000/_next/static/chunks/remoteEntry.js",
+        },
       })
     );
     return config;

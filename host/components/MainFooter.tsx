@@ -113,7 +113,7 @@ const MainFooter = () => {
           </Flex>
 
           <Flex gap={8} style={{ marginTop: isMobile ? "16px" : 0 }}>
-            <Input placeholder="Email" />
+            <Input placeholder="Email" name="email" autoComplete="email" />
             <Button type="primary">Sign Up</Button>
           </Flex>
         </Flex>
