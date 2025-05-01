@@ -55,8 +55,8 @@ This project is a complete solution that demonstrates modern frontend developmen
 1. Clone the Repository
 
 ```bash
-git clone https://github.com/kadirmetin/kayra-export-task.git
-cd kayra-export-task
+git clone https://github.com/kadirmetin/micro-frontend-based-ecommerce.git
+cd micro-frontend-based-ecommerce
 ```
 
 2. Install Dependencies
